@@ -1,4 +1,4 @@
-"""rest_api URL Configuration
+"""rest_api URL Configuration 
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -15,20 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app1.views import CategoryAPIView,ProductAPIView,SalesAPIView
+from app1.views import CategoryListCreateAPIView,CategoryRetrieveUpdateDestroyAPIView,\
+    ProductListCreateAPIView,ProductRetrieveUpdateDestroyAPIView,\
+    SalesOrderListCreateAPIView,SalesOrderRetrieveUpdateDestroyAPIView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('categories/',CategoryAPIView.as_view()),
-    path('categories/<int:cat_id>/',CategoryAPIView.as_view()),
+    path('categories/',CategoryListCreateAPIView.as_view()), #post,get
+    path('categories/<int:pk>/',CategoryRetrieveUpdateDestroyAPIView.as_view()), #put,get,delete
 
 
-    path('product/',ProductAPIView.as_view()),
-    path('product/<int:pro_id>/',ProductAPIView.as_view()),
+    path('product/',ProductListCreateAPIView.as_view()),
+    path('product/<int:pk>/',ProductRetrieveUpdateDestroyAPIView.as_view()),
 
 
-    path('salesorder/',SalesAPIView.as_view()),
-    path('salesorder/<int:sal_id>/',SalesAPIView.as_view()),
+    path('salesorder/',SalesOrderListCreateAPIView.as_view()),
+    path('salesorder/<int:pk>/',SalesOrderRetrieveUpdateDestroyAPIView.as_view()),
 
 
 
